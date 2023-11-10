@@ -1,0 +1,59 @@
+body, html {
+    height: 100%;
+}
+
+#root {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.main {
+    background-color: green;
+    width: 400px;
+    height: 200px;
+    border-radius: 50%;
+    position: relative;
+}
+
+.join-btn {
+    position: absolute;
+    top: 75px;
+    left: 160px;
+}
+
+.seat1, .seat2, .seat3, .seat4 {
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    border-radius: 25%;
+}
+
+.seat1 {
+    position: absolute;
+    top: 0;
+    left: 160px;
+}
+
+.seat2 {
+    position: absolute;
+    top: 75px;
+    right: 0px;
+}
+
+
+.seat3 {
+    position: absolute;
+    bottom: 0;
+    left: 160px;
+}
+
+.seat4 {
+    position: absolute;
+    top: 75px;
+    left: 0px;
+}
