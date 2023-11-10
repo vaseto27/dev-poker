@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Player from "./Player";
 
 const Game = () => {
   const [players, setPlayers] = useState([]);
@@ -11,15 +12,15 @@ const Game = () => {
       .then((res) => res.json())
       .then((player) => setPlayers([...players, player.data]));
   };
+
+  
   return (
     <div>
       <button className="join-btn" onClick={joinGame}>Join Game</button>
       {players.map((player, index) => {
-        console.log(index)
         return (
           <div className={'seat'+(index+1)} key={player.id}>
-            <div>{player.name}</div>
-            <div>{player.balance}</div>   
+             <Player player={player}/>
           </div>
         );
       })}

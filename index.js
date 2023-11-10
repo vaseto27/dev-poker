@@ -2,11 +2,14 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const PokerGame = require('./backend/pokerGame');
-const Player = require('./backend/player')
+const Player = require('./backend/player');
+const Deck = require('./backend/deck');
 
 
 const app = express();
 let game;
+let deck = new Deck();
+deck.initializeDeck();
 
 const startGame = () => {
      game = new PokerGame();
@@ -19,11 +22,16 @@ const DEFAULT_PORT = 3000;
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname,'client/dist')))
 
-app.use('/api/start-game', (req, res) => {
+app.get('/api/start-game', (req, res) => {
     startGame();
     res.send('Game started')
 })
 
+
+app.get('/api/deal-hand', (req, res) => {
+    const card = deck.dealCard();
+    res.json({data: card, message: 'Card has been dealt'})
+})
 
 
 app.post('/api/add-player', (req, res) => {
