@@ -9,13 +9,15 @@ const Deck = require('./backend/deck');
 const app = express();
 let game;
 let deck = new Deck();
-deck.initializeDeck();
+
 
 const startGame = () => {
      game = new PokerGame();
 }
 
 startGame();
+deck.initializeDeck();
+deck.shuffleDeck();
 
 const DEFAULT_PORT = 3000;
 
@@ -29,8 +31,9 @@ app.get('/api/start-game', (req, res) => {
 
 
 app.get('/api/deal-hand', (req, res) => {
-    const card = deck.dealCard();
-    res.json({data: card, message: 'Card has been dealt'})
+    const card1 = deck.dealCard();
+    const card2 = deck.dealCard();
+    res.json({data: [card1, card2], message: 'Card has been dealt'})
 })
 
 

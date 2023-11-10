@@ -28969,13 +28969,19 @@ var Player = function Player(props) {
     fetch("".concat(document.location.origin, "/api/deal-hand")).then(function (res) {
       return res.json();
     }).then(function (card) {
-      return console.log(card);
+      setCards(card.data);
     });
   };
   (0, _react.useEffect)(function () {
     dealCard();
   }, []);
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", null, props.player.name), /*#__PURE__*/_react.default.createElement("div", null, props.player.balance));
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", null, props.player.name), /*#__PURE__*/_react.default.createElement("div", null, props.player.balance), /*#__PURE__*/_react.default.createElement("div", {
+    className: "card-container"
+  }, cards.map(function (card, index) {
+    return /*#__PURE__*/_react.default.createElement("div", {
+      key: index
+    }, card.rank, " ", card.suit);
+  })));
 };
 var _default = exports.default = Player;
 },{"react":"../../node_modules/react/index.js"}],"components/Game.js":[function(require,module,exports) {
